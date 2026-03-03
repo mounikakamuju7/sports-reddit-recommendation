@@ -5,3 +5,4 @@ scikit-learn
 fastapi
 uvicorn
 gunicorn
+requests
