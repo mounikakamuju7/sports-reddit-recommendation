@@ -6,7 +6,7 @@ import requests
 # Page Config
 # -----------------------------
 st.set_page_config(page_title="Sports Reddit News Recommender", layout="wide")
-
+BACKEND_URL = "https://sports-reddit-recommendation-1.onrender.com"
 # -----------------------------
 # CSS Styling
 # -----------------------------
@@ -71,9 +71,7 @@ if st.sidebar.button("Get Recommendations"):
         st.warning("⚠️ Please enter a User ID")
     else:
         try:
-            response = requests.get(
-                f"https://sports-reddit-recommendation-1.onrender.com/recommend//{user_id}"
-            )
+            response = requests.get(f"{BACKEND_URL}/recommend/{user_id}")
 
             data = response.json()
             recommendations = data["recommendations"]
@@ -108,7 +106,9 @@ st.markdown("## 📊 Recommendation Metrics")
 if st.button("Load Model Metrics"):
 
     try:
-        metrics_response = requests.get("http://127.0.0.1:8000/metrics")
+        metrics_response = requests.get(
+            f"{BACKEND_URL}/metrics"
+        )
         metrics = metrics_response.json()
 
         col1, col2, col3 = st.columns(3)
