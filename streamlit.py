@@ -72,7 +72,7 @@ if st.sidebar.button("Get Recommendations"):
     else:
         try:
             response = requests.get(
-                f"http://localhost:10000/recommend//{user_id}"
+                f"https://sports-reddit-recommendation-1.onrender.com/recommend//{user_id}"
             )
 
             data = response.json()
